@@ -407,16 +407,3 @@ int main()
 	}
 }
 
-
-/*
-	2 struct arrays were used, EventRecord and Server, EventRecord eRecord[] stores all event data that occurs, so customer arrivals and server finish events. Server server[] stores all the server attributes data.
-	A priority queue is implemented (min heap) to keep EventRecords earliest event which is what should happen next, either next customer arrived or server event finished.
-		The min heap is an int eventQueue[] that only stores EventRecords struct array index so only integer values are ever swapped in the heap sifts (indexes are used as pointers to struct storage)
-	A priority queue is implemented (max heap) to keep the most efficient at the root, so the most efficient server is always selected at teh given time.
-		The max heap is an int serverHeap[] that only stores Server struct array index so only integer values are ever swapped in the heap sifts (indexes are used as pointers to struct storage)
-	A FIFO Queue is used to store customers who are not served immediately, this is an int cRecord[] that only enqueues the index to EventRecord eRecord[] so only integers are written into the queue (indexes are used as pointers to struct storage)
-	All data structures (int eventQueue[], int serverHeap[] and int cRecord[]) store indexes of EventRecord eRecord[] to point to the associated data.
-
-	EventRecord eRecord[]->type is used to distinguisg between customer arrival event and server finish event, if(type == -1) customer arrival process accordingly, if(type > -1) the integer value points to Server server[] struct to keep track
-	of what server just finished and must be added back into the int serverHeap[] as they are now available again.
-*/
